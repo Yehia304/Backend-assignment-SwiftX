@@ -16,6 +16,13 @@ class CreateJoggingTimesTable extends Migration
         Schema::create('jogging_times', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->unsignedBigInteger('user_id');
+            $table->date('date');
+            $table->integer('distance');
+            $table->time('time');
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
         });
     }
 
